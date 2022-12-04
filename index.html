@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -29,7 +29,10 @@
     <link rel="stylesheet" media="screen" href="assets/vendor/lightgallery/css/lightgallery-bundle.min.css"/>
 
     <!-- Main Theme Styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="assets/css/theme.css">
+
+    <!-- User Styles -->
+    <link rel="stylesheet" media="screen" href="assets/css/user.css">
 
     <!-- Page loading styles -->
     <style>
@@ -213,7 +216,7 @@
                     <img src="assets/img/avatar/logo-paper.png" class="rounded-circle" width="48" alt="Avatar">
                   </div>
                   <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
-                    <img src="assets/img/avatar/logo-bulbs.png" class="rounded-circle" width="48" alt="Avatar">
+                    <img src="assets/img/avatar/logo-bulb.png" class="rounded-circle" width="48" alt="Avatar">
                   </div>
                   <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
                     <img src="assets/img/avatar/logo-glass.png" class="rounded-circle" width="48" alt="Avatar">
@@ -222,10 +225,13 @@
                     <img src="assets/img/avatar/logo-organic.png" class="rounded-circle" width="48" alt="Avatar">
                   </div>
                   <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
-                    <img src="assets/img/avatar/logo-cellulars.png" class="rounded-circle" width="48" alt="Avatar">
+                    <img src="assets/img/avatar/logo-cellular.png" class="rounded-circle" width="48" alt="Avatar">
                   </div>
                   <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
                     <img src="assets/img/avatar/logo-medical.png" class="rounded-circle" width="48" alt="Avatar">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="assets/img/avatar/logo-bottle-cap.png" class="rounded-circle" width="48" alt="Avatar">
                   </div>
                 </div>
                 <!-- <span class="fs-sm"><span class="text-primary fw-semibold">Пластик, металл, картон</span>, крышечки, батарейки...</span> -->
@@ -525,10 +531,6 @@
             </div>
             <div id="image-4" class="jarallax position-absolute top-0 start-0 w-100 h-100 swiper-tab" data-jarallax data-speed="0.4">
               <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-35"></span>
-              <div class="jarallax-img" style="background-image: url(assets/img/landing/conference/types-bottle-cap.jpg);"></div>
-            </div>
-            <div id="image-5" class="jarallax position-absolute top-0 start-0 w-100 h-100 swiper-tab" data-jarallax data-speed="0.4">
-              <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-35"></span>
               <div class="jarallax-img" style="background-image: url(assets/img/landing/conference/types-battery.jpg);"></div>
             </div>
           </div>
@@ -536,7 +538,7 @@
           <!-- Swiper slider -->
           <div class="container position-relative zindex-5 py-5">
             <div class="row py-2 py-md-3">
-              <div class="col-xl-5 col-lg-7 col-md-9">
+              <div class="col-lg-7 col-md-9">
 
                 <!-- Slider controls (Prev / next) -->
                 <div class="d-flex justify-content-center justify-content-md-start pb-3 mb-3">
@@ -572,13 +574,30 @@
                           <h3 class="mb-2">Пластик</h3>
                           <p class="fs-sm text-muted border-bottom pb-3 mb-3">И всё, что с ним связано</p>
                           <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие категории пластика: PP 01, 02, 03, 05, HDPA</p>
-                          <ul>
-                              <li><strong>PP 01: </strong>Прозрачные бутылки, голубые бутылки, зелёные, коричневые</li>
-                              <li><strong>PP 02: </strong>Одно, второе, третье</li>
-                              <li><strong>PP 05: </strong>Из-под шампуня, гель для душа</li>
-                              <li><strong>HDPA: </strong>Бытовая химия</li>
+                          <ul class="list-unstyled">
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>01 PET(E): </strong>Прозрачные бутылки из-под напитков (голубые, зеленые, корчневые)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>01 PET(E): </strong>Цветные бутылки из-под напитков (йогурт, кефир)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>02 HDPE: </strong>Упаковка из-под бытовой химии с крышками (порошок, кондиционер, средство для мытья посуды, чистящие средства)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>02 HDPE: </strong>Пакеты</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>02 HDPE: Крышечки</strong></li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>04 LDPE: </strong>Пакеты, зип-локи</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>05 PP: </strong>Упаковка из-под молочных продуктов (йогурты, сметана, каймак, брынза)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>05 PP: </strong>Крупногабаритный пластик (столы, стулья, ящики)</li>
                           </ul>
-                          <a href="#" class="btn btn-primary">Детали и подробности</a>
+                          <div class="alert alert-danger" role="alert">
+                              <p class="pb-2 pb-lg-3 mb-3"><u><strong>НЕ ПРИНИМАЕТСЯ:</strong></u></p>
+                            <ul>
+                                <li>Пенопласт</li>
+                                <li>Вспененные белые поддончики для еды (сыр, ветчина)</li>
+                                <li>Пластиковые тюбики из-под зубной пасты</li>
+                                <li>Прозрачные упаковочные контейнеры из-под еды</li>
+                                <li>Упаковка из-под чипсов</li>
+                                <li>ПВХ, трубы для канализации и сантехники</li>
+                                <li>Нейлон (зубные счётки, носки, колготки)</li>
+                                <li>ГРЯЗНОЕ, НЕМЫТОЕ</li>
+                            </ul>
+                          </div>
+                          <!-- <a href="#" class="btn btn-primary">Детали и подробности</a> -->
                         </div>
 
                         <!-- Item -->
@@ -587,11 +606,20 @@
                           <h3 class="mb-2">Металлические изделия</h3>
                           <p class="fs-sm text-muted border-bottom pb-3 mb-3">Железо, алюминий</p>
                           <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие виды вторсырья:</p>
-                          <ul>
-                              <li><strong>Алюминий: </strong>банки из-под содовых, алкоголных</li>
-                              <li><strong>Железо: </strong>банки из-под консервов</li>
+                          <ul class="list-unstyled">
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>40 FE: </strong>Жестяные банки из под еды</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>41 ALU: </strong>Алюминиевые банки</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>41 ALU: </strong>Фольга (сама фольга, верхние фольгированные крышечки/наклейки от сметаны, йогурта)</li>
                           </ul>
-                          <a href="#" class="btn btn-primary">Детали и подробности</a>
+                          <div class="alert alert-danger" role="alert">
+                              <p class="pb-2 pb-lg-3 mb-3"><u><strong>НЕ ПРИНИМАЕТСЯ:</strong></u></p>
+                            <ul>
+                                <li>Упаковка из-под чипсов</li>
+                                <li>РЖАВОЕ</li>
+                                <li>ГРЯЗНОЕ, НЕМЫТОЕ</li>
+                            </ul>
+                          </div>
+                          <!-- <a href="#" class="btn btn-primary">Детали и подробности</a> -->
                         </div>
 
                         <!-- Item -->
@@ -600,37 +628,47 @@
                           <h3 class="mb-2">Бумага, картон</h3>
                           <p class="fs-sm text-muted border-bottom pb-3 mb-3">Бумажные изделия</p>
                           <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие бумажные продукты:</p>
-                          <ul>
-                              <li><strong>Картон: </strong>Коробки, упаковка (мюсли, каши, порошок)</li>
-                              <li><strong>Бумага: </strong>Тетради, исписанные альбомы, книги</li>
+                          <ul class="list-unstyled">
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>20 PAP: </strong>Крупный картон (коробки)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>21 PAP: </strong>Картонная упаковка (яйца, хлопья, мюсли, каши)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>22 PAP: </strong>Бумага (газеты, книги, журналы, тетради)</li>
                           </ul>
-                          <a href="#" class="btn btn-primary">Детали и подробности</a>
+                          <div class="alert alert-danger" role="alert">
+                              <p class="pb-2 pb-lg-3 mb-3"><u><strong>НЕ ПРИНИМАЕТСЯ:</strong></u></p>
+                            <ul>
+                                <li>Термобумага (чеки)</li>
+                                <li>Тетрапак</li>
+                                <li>Бумага, содержащая пластик</li>
+                                <li>Бумага со скотчем</li>
+                                <li>МОКРОЕ, ГРЯЗНОЕ</li>
+                            </ul>
+                          </div>
+                          <!-- <a href="#" class="btn btn-primary">Детали и подробности</a> -->
                         </div>
 
                         <!-- Item -->
                         <div class="swiper-slide" data-swiper-tab="#image-4">
-                          <img src="assets/img/avatar/logo-plastic.png" class="d-block mb-3" width="72" alt="Logo">
-                          <h3 class="mb-2">Пластиковые крышечки</h3>
-                          <p class="fs-sm text-muted border-bottom pb-3 mb-3">Бумажные изделия</p>
-                          <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие бумажные продукты:</p>
-                          <ul>
-                              <li><strong>Картон: </strong>Коробки, упаковка (мюсли, каши, порошок)</li>
-                              <li><strong>Бумага: </strong>Тетради, исписанные альбомы, книги</li>
-                          </ul>
-                          <a href="#" class="btn btn-primary">Детали и подробности</a>
-                        </div>
-
-                        <!-- Item -->
-                        <div class="swiper-slide" data-swiper-tab="#image-5">
                           <img src="assets/img/avatar/logo-battery.png" class="d-block mb-3" width="72" alt="Logo">
                           <h3 class="mb-2">Батарейки</h3>
                           <p class="fs-sm text-muted border-bottom pb-3 mb-3">Бумажные изделия</p>
                           <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие бумажные продукты:</p>
-                          <ul>
-                              <li><strong>Картон: </strong>Коробки, упаковка (мюсли, каши, порошок)</li>
-                              <li><strong>Бумага: </strong>Тетради, исписанные альбомы, книги</li>
+                          <ul class="list-unstyled">
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>08 Lead: </strong>Автомобильные аккумуляторы</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>09 Alkaline: </strong>Алкалиновые батарейки (пульты, фанарики, AA, AAA)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>10 NiCd: </strong>Старые Никель-кадмиевые аккумуляторы</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>11 NiMH: </strong>Никель-металлогидридный аккумуляторы</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>12 Li: </strong>Литиевые аккумуляторы (телефоны, камеры, фотоаппараты, компьютеры)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>13 SO(Z): </strong>Серебряно-цинковые батарейки (часы, брелки)</li>
+                              <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>14 CZ: </strong>Марганцево-цинковые элементы (крупные батарейки в фонарики)</li>
                           </ul>
-                          <a href="#" class="btn btn-primary">Детали и подробности</a>
+                          <div class="alert alert-danger" role="alert">
+                              <p class="pb-2 pb-lg-3 mb-3"><u><strong>НЕ ПРИНИМАЕТСЯ:</strong></u></p>
+                            <ul>
+                                <li>ГРЯЗНОЕ, НЕМЫТОЕ</li>
+                                <li>РЖАВОЕ</li>
+                            </ul>
+                          </div>
+                          <!-- <a href="#" class="btn btn-primary">Детали и подробности</a> -->
                         </div>
 
                       </div>
