@@ -1,5 +1,5 @@
-!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <title>Reciklažica | Рециклажица</title>
@@ -176,13 +176,14 @@
 
 
       <!-- Video + Title split section -->
-      <section class="container-fluid position-relative px-0 mt-3 mt-lg-4">
+      <section class="container-fluid position-relative px-0 pt-5 mt-3 mt-lg-4">
         <div class="row g-0">
           <div class="col-xl-7 col-lg-6 pe-lg-5">
             <div class="d-flex h-100 pe-xl-4">
-              <video class="w-100" autoplay muted loop style="object-fit: cover;">
-                <source src="assets/img/landing/how-recycle.mp4" type="video/mp4">
-              </video>
+              <div class="w-100 h-100 overflow-hidden bg-position-center bg-repeat-0 bg-size-cover" style="background-image: url(assets/img/landing/landing-main.jpg); border-bottom-left-radius: .5rem;"></div>
+              <!-- <video class="w-100" autoplay muted loop style="object-fit: cover;"> -->
+                <!-- <source src="assets/img/landing/how-recycle.mp4" type="video/mp4"> -->
+              <!-- </video> -->
             </div>
           </div>
           <div class="col-xl-5 col-lg-6 position-relative py-5">
@@ -339,7 +340,7 @@
               </a>
               <a href="#day-2" class="nav-link d-block w-100 rounded-3 p-4 p-xl-5" id="day-2-tab" data-bs-toggle="tab" role="tab" aria-controls="day-2" aria-selected="false">
                 <div class="fs-xl">Суббота</div>
-                <div class="fs-3 fw-bold">27 Января 2023</div>
+                <div class="fs-3 fw-bold">28 Января 2023</div>
               </a>
             </div>
           </div>
@@ -548,7 +549,7 @@
           <div class="row align-items-center pb-5">
             <div class="col-md-8 col-lg-7 col-xl-6 text-center text-md-start">
                 <p class="fs-lg text-muted mb-md-0">Черногория делает свои первые шаги во вторичной переработке и не всё, что нам бы хотелось, сейчас может быть переработано.</p>
-                <p class="fs-lg text-muted mb-md-0">Обратите внимание, что <mark>только 4 типа вторсырья</mark> сейчас принимается волонтёрами на Рециклажице:</p>
+                <p class="fs-lg text-muted mb-md-0">Обратите внимание, что <mark>только 4 типа вторсырья</mark> сейчас принимаются волонтёрами на Рециклажице:</p>
             </div>
             <div class="col-md-4 col-lg-5 col-xl-6 d-flex justify-content-center justify-content-md-end">
               <a href="#" class="btn btn-outline-primary btn-lg">Подробное описание</a>
@@ -581,20 +582,16 @@
           <!-- Swiper slider -->
           <div class="container position-relative zindex-5 py-5">
             <div class="row py-2 py-md-3">
-              <div class="col-lg-7 col-md-9">
-
-                <!-- Slider controls (Prev / next) -->
-                <div class="d-flex justify-content-center justify-content-md-start pb-3 mb-3">
-                  <button type="button" id="case-study-prev" class="btn btn-prev btn-icon btn-sm bg-white me-2">
-                    <i class="bx bx-chevron-left"></i>
-                  </button>
-                  <button type="button" id="case-study-next" class="btn btn-next btn-icon btn-sm bg-white ms-2">
-                    <i class="bx bx-chevron-right"></i>
-                  </button>
-                </div>
+              <div class="col-lg-7 col-md-9 offset-md-1">
 
                 <!-- Card -->
                 <div class="card bg-white shadow-sm p-3">
+                  <button type="button" id="case-study-prev" class="btn btn-prev btn-icon btn-sm position-absolute top-50 start-negative-10 translate-middle-y d-none d-md-inline-flex">
+                    <i class="bx bx-chevron-left"></i>
+                  </button>
+                  <button type="button" id="case-study-next" class="btn btn-next btn-icon btn-sm position-absolute top-50 end-negative-10 translate-middle-y d-none d-md-inline-flex">
+                    <i class="bx bx-chevron-right"></i>
+                  </button>
                   <div class="card-body">
                     <div class="swiper" data-swiper-options='{
                       "spaceBetween": 30,
@@ -615,8 +612,8 @@
                         <div class="swiper-slide" data-swiper-tab="#image-1">
                           <img src="assets/img/avatar/logo-plastic.png" class="d-block mb-3" width="72" alt="Logo">
                           <h3 class="mb-2">Пластик</h3>
-                          <p class="fs-sm text-muted border-bottom pb-3 mb-3">И всё, что с ним связано</p>
-                          <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие категории пластика: PP 01, 02, 03, 05, HDPA</p>
+                          <p class="fs-sm text-muted border-bottom pb-3 mb-3">Пластиковые изделия</p>
+                          <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие категории пластика:</p>
                           <ul class="list-unstyled">
                               <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>01 PET(E): </strong>Прозрачные бутылки из-под напитков (голубые, зеленые, корчневые)</li>
                               <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>01 PET(E): </strong>Цветные бутылки из-под напитков (йогурт, кефир)</li>
@@ -646,8 +643,8 @@
                         <!-- Item -->
                         <div class="swiper-slide" data-swiper-tab="#image-2">
                           <img src="assets/img/avatar/logo-metal.png" class="d-block mb-3" width="72" alt="Logo">
-                          <h3 class="mb-2">Металлические изделия</h3>
-                          <p class="fs-sm text-muted border-bottom pb-3 mb-3">Железо, алюминий</p>
+                          <h3 class="mb-2">Железо, жесть, алюминий</h3>
+                          <p class="fs-sm text-muted border-bottom pb-3 mb-3">Металлические изделия</p>
                           <p class="pb-2 pb-lg-3 mb-3">Принимаются следующие виды вторсырья:</p>
                           <ul class="list-unstyled">
                               <li><i class="bx bx-recycle fs-4 text-primary me-1 icon-position-low"></i><strong>40 FE: </strong>Жестяные банки из под еды</li>
