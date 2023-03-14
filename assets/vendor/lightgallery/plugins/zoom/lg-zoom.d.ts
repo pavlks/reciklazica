@@ -58,7 +58,7 @@ export default class Zoom {
      * @param {String} scale - Zoom decrement/increment value
      */
     zoomImage(scale: number, scaleDiff: number, reposition: boolean, resetToMax: boolean): void;
-    resetImageTranslate(): void;
+    resetImageTranslate(index: number): void;
     setZoomImageSize(): void;
     /**
      * @desc apply scale3d to image and translate to image wrap
@@ -93,7 +93,7 @@ export default class Zoom {
     private isBeyondPossibleRight;
     private isBeyondPossibleTop;
     private isBeyondPossibleBottom;
-    isImageSlide(): boolean;
+    isImageSlide(index: number): boolean;
     getPossibleSwipeDragCords(scale?: number): PossibleCords;
     setZoomSwipeStyles(LGel: lgQuery, distance: {
         x: number;

@@ -28,7 +28,7 @@ function __rest(s, e) {
 }
 
 /*!
- * lightgallery | 2.6.0 | August 29th 2022
+ * lightgallery | 2.7.1 | January 11th 2023
  * http://www.lightgalleryjs.com/
  * Copyright (c) 2020 Sachin Neravath;
  * @license GPLv3
