@@ -13,6 +13,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var lg_zoom_settings_1 = require("./lg-zoom-settings");
 var lg_events_1 = require("../../lg-events");
+var ZOOM_TRANSITION_DURATION = 500;
 var Zoom = /** @class */ (function () {
     function Zoom(instance, $LG) {
         // get lightGallery core plugin instance
@@ -53,7 +54,7 @@ var Zoom = /** @class */ (function () {
             this.$LG('body').first().removeClass('lg-from-hash');
         }
         this.zoomableTimeout = setTimeout(function () {
-            if (!_this.isImageSlide()) {
+            if (!_this.isImageSlide(_this.core.index)) {
                 return;
             }
             _this.core.getSlideItem(event.detail.index).addClass('lg-zoomable');
@@ -208,17 +209,14 @@ var Zoom = /** @class */ (function () {
         this.left = x;
         this.top = y;
         if (resetToMax) {
-            var actualSizeScale = this.getCurrentImageActualSizeScale();
-            if (scale >= actualSizeScale) {
-                this.setZoomImageSize();
-            }
+            this.setZoomImageSize();
         }
     };
-    Zoom.prototype.resetImageTranslate = function () {
-        var $image = this.core
-            .getSlideItem(this.core.index)
-            .find('.lg-image')
-            .first();
+    Zoom.prototype.resetImageTranslate = function (index) {
+        if (!this.isImageSlide(index)) {
+            return;
+        }
+        var $image = this.core.getSlideItem(index).find('.lg-image').first();
         this.imageReset = false;
         $image.removeClass('reset-transition reset-transition-y reset-transition-x');
         this.core.outer.removeClass('lg-actual-size');
@@ -234,25 +232,33 @@ var Zoom = /** @class */ (function () {
             .find('.lg-image')
             .first();
         setTimeout(function () {
-            $image.addClass('no-transition');
-            _this.imageReset = true;
-        }, 500);
+            var actualSizeScale = _this.getCurrentImageActualSizeScale();
+            if (_this.scale >= actualSizeScale) {
+                $image.addClass('no-transition');
+                _this.imageReset = true;
+            }
+        }, ZOOM_TRANSITION_DURATION);
         setTimeout(function () {
-            var dragAllowedAxises = _this.getDragAllowedAxises(_this.scale);
-            $image
-                .css('width', $image.get().naturalWidth + 'px')
-                .css('height', $image.get().naturalHeight + 'px');
-            _this.core.outer.addClass('lg-actual-size');
-            if (dragAllowedAxises.allowX && dragAllowedAxises.allowY) {
-                $image.addClass('reset-transition');
+            var actualSizeScale = _this.getCurrentImageActualSizeScale();
+            if (_this.scale >= actualSizeScale) {
+                var dragAllowedAxises = _this.getDragAllowedAxises(_this.scale);
+                $image
+                    .css('width', $image.get().naturalWidth + 'px')
+                    .css('height', $image.get().naturalHeight + 'px');
+                _this.core.outer.addClass('lg-actual-size');
+                if (dragAllowedAxises.allowX && dragAllowedAxises.allowY) {
+                    $image.addClass('reset-transition');
+                }
+                else if (dragAllowedAxises.allowX &&
+                    !dragAllowedAxises.allowY) {
+                    $image.addClass('reset-transition-x');
+                }
+                else if (!dragAllowedAxises.allowX &&
+                    dragAllowedAxises.allowY) {
+                    $image.addClass('reset-transition-y');
+                }
             }
-            else if (dragAllowedAxises.allowX && !dragAllowedAxises.allowY) {
-                $image.addClass('reset-transition-x');
-            }
-            else if (!dragAllowedAxises.allowX && dragAllowedAxises.allowY) {
-                $image.addClass('reset-transition-y');
-            }
-        }, 550);
+        }, ZOOM_TRANSITION_DURATION + 50);
     };
     /**
      * @desc apply scale3d to image and translate to image wrap
@@ -283,7 +289,7 @@ var Zoom = /** @class */ (function () {
     Zoom.prototype.setActualSize = function (index, event) {
         var _this = this;
         var currentItem = this.core.galleryItems[this.core.index];
-        this.resetImageTranslate();
+        this.resetImageTranslate(index);
         setTimeout(function () {
             // Allow zoom only on image
             if (!currentItem.src ||
@@ -415,7 +421,7 @@ var Zoom = /** @class */ (function () {
         });
         this.core.LGel.on(lg_events_1.lGEvents.containerResize + ".zoom " + lg_events_1.lGEvents.rotateRight + ".zoom " + lg_events_1.lGEvents.rotateLeft + ".zoom " + lg_events_1.lGEvents.flipHorizontal + ".zoom " + lg_events_1.lGEvents.flipVertical + ".zoom", function () {
             if (!_this.core.lgOpened ||
-                !_this.isImageSlide() ||
+                !_this.isImageSlide(_this.core.index) ||
                 _this.core.touchAction) {
                 return;
             }
@@ -437,12 +443,12 @@ var Zoom = /** @class */ (function () {
         });
         this.core.getElementById('lg-zoom-out').on('click.lg', function () {
             // Allow zoom only on image
-            if (!_this.isImageSlide()) {
+            if (!_this.isImageSlide(_this.core.index)) {
                 return;
             }
             var timeout = 0;
             if (_this.imageReset) {
-                _this.resetImageTranslate();
+                _this.resetImageTranslate(_this.core.index);
                 timeout = 50;
             }
             setTimeout(function () {
@@ -476,7 +482,8 @@ var Zoom = /** @class */ (function () {
             _this.scale = 1;
             _this.positionChanged = false;
             _this.resetZoom(prevIndex);
-            if (_this.isImageSlide()) {
+            _this.resetImageTranslate(prevIndex);
+            if (_this.isImageSlide(_this.core.index)) {
                 _this.setZoomEssentials();
             }
         });
@@ -490,13 +497,13 @@ var Zoom = /** @class */ (function () {
     };
     Zoom.prototype.zoomIn = function () {
         // Allow zoom only on image
-        if (!this.isImageSlide()) {
+        if (!this.isImageSlide(this.core.index)) {
             return;
         }
         var scale = this.scale + this.settings.scale;
         scale = this.getScale(scale);
         this.beginZoom(scale);
-        this.zoomImage(scale, this.settings.scale, true, true);
+        this.zoomImage(scale, Math.min(this.settings.scale, scale - this.scale), true, true);
     };
     // Reset zoom effect
     Zoom.prototype.resetZoom = function (index) {
@@ -529,7 +536,7 @@ var Zoom = /** @class */ (function () {
         var $item = this.core.getSlideItem(this.core.index);
         this.core.outer.on('touchstart.lg', function (e) {
             $item = _this.core.getSlideItem(_this.core.index);
-            if (!_this.isImageSlide()) {
+            if (!_this.isImageSlide(_this.core.index)) {
                 return;
             }
             if (e.touches.length === 2) {
@@ -540,7 +547,7 @@ var Zoom = /** @class */ (function () {
                 initScale = _this.scale || 1;
                 _this.core.outer.removeClass('lg-zoom-drag-transition lg-zoom-dragging');
                 _this.setPageCords(e);
-                _this.resetImageTranslate();
+                _this.resetImageTranslate(_this.core.index);
                 _this.core.touchAction = 'pinch';
                 startDist = _this.getTouchDistance(e);
             }
@@ -689,8 +696,8 @@ var Zoom = /** @class */ (function () {
     Zoom.prototype.isBeyondPossibleBottom = function (y, maxY) {
         return y <= maxY;
     };
-    Zoom.prototype.isImageSlide = function () {
-        var currentItem = this.core.galleryItems[this.core.index];
+    Zoom.prototype.isImageSlide = function (index) {
+        var currentItem = this.core.galleryItems[index];
         return this.core.getSlideType(currentItem) === 'image';
     };
     Zoom.prototype.getPossibleSwipeDragCords = function (scale) {
@@ -737,7 +744,7 @@ var Zoom = /** @class */ (function () {
         var $item = this.core.getSlideItem(this.core.index);
         this.core.$inner.on('touchstart.lg', function (e) {
             // Allow zoom only on image
-            if (!_this.isImageSlide()) {
+            if (!_this.isImageSlide(_this.core.index)) {
                 return;
             }
             $item = _this.core.getSlideItem(_this.core.index);
@@ -812,7 +819,7 @@ var Zoom = /** @class */ (function () {
         var _LGel;
         this.core.outer.on('mousedown.lg.zoom', function (e) {
             // Allow zoom only on image
-            if (!_this.isImageSlide()) {
+            if (!_this.isImageSlide(_this.core.index)) {
                 return;
             }
             var $item = _this.core.getSlideItem(_this.core.index);

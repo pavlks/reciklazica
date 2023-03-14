@@ -3,3 +3,12 @@ i.icon-position-low {
   position: relative;
   top: 4;
 }
+
+.start-negative-10 {
+  left: -10% !important;
+}
+
+.end-negative-10 {
+  right: -10% !important;
+}
+
