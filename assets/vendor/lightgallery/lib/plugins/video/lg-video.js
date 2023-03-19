@@ -180,16 +180,12 @@ var Video = /** @class */ (function () {
         var commonIframeProps = "allowtransparency=\"true\"\n            frameborder=\"0\"\n            scrolling=\"no\"\n            allowfullscreen\n            mozallowfullscreen\n            webkitallowfullscreen\n            oallowfullscreen\n            msallowfullscreen";
         if (videoInfo.youtube) {
             var videoId = 'lg-youtube' + index;
-            var slideUrlParams = videoInfo.youtube[2]
-                ? videoInfo.youtube[2] + '&'
-                : '';
-            // For youtube first parms gets priority if duplicates found
-            var youTubePlayerParams = "?" + slideUrlParams + "wmode=opaque&autoplay=0&mute=1&enablejsapi=1";
-            var playerParams = youTubePlayerParams +
-                (this.settings.youTubePlayerParams
-                    ? '&' + lg_video_utils_1.param(this.settings.youTubePlayerParams)
-                    : '');
-            video = "<iframe allow=\"autoplay\" id=" + videoId + " class=\"lg-video-object lg-youtube " + addClass + "\" " + videoTitle + " src=\"//www.youtube.com/embed/" + (videoInfo.youtube[1] + playerParams) + "\" " + commonIframeProps + "></iframe>";
+            var youTubeParams = lg_video_utils_1.getYouTubeParams(videoInfo, this.settings.youTubePlayerParams);
+            var isYouTubeNoCookieURL = lg_video_utils_1.isYouTubeNoCookie(src);
+            var youtubeURL = isYouTubeNoCookieURL
+                ? '//www.youtube-nocookie.com/'
+                : '//www.youtube.com/';
+            video = "<iframe allow=\"autoplay\" id=" + videoId + " class=\"lg-video-object lg-youtube " + addClass + "\" " + videoTitle + " src=\"" + youtubeURL + "embed/" + (videoInfo.youtube[1] + youTubeParams) + "\" " + commonIframeProps + "></iframe>";
         }
         else if (videoInfo.vimeo) {
             var videoId = 'lg-vimeo' + index;
