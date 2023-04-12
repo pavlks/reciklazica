@@ -375,16 +375,20 @@
           <!-- Swiper slider -->
           <div class="container position-relative zindex-5 py-5">
             <div class="row py-2 py-md-3">
-              <div class="col-lg-7 col-md-9 offset-md-1">
+              <div class="col-lg-8 col-md-10 offset-md-1">
+
+                <!-- Slider controls (Prev / next) -->
+                <div class="d-flex justify-content-center justify-content-md-start pb-3 mb-3">
+                  <button type="button" id="case-study-prev" class="btn btn-prev btn-icon btn-lg me-2">
+                    <i class="bx bx-chevron-left"></i>
+                  </button>
+                  <button type="button" id="case-study-next" class="btn btn-next btn-icon btn-lg ms-2">
+                    <i class="bx bx-chevron-right"></i>
+                  </button>
+                </div>
 
                 <!-- Card -->
                 <div class="card bg-white shadow-sm p-3">
-                  <button type="button" id="case-study-prev" class="btn btn-prev btn-icon btn-sm position-absolute top-50 start-negative-10 translate-middle-y d-none d-md-inline-flex">
-                    <i class="bx bx-chevron-left"></i>
-                  </button>
-                  <button type="button" id="case-study-next" class="btn btn-next btn-icon btn-sm position-absolute top-50 end-negative-10 translate-middle-y d-none d-md-inline-flex">
-                    <i class="bx bx-chevron-right"></i>
-                  </button>
                   <div class="card-body">
                     <div class="swiper" data-swiper-options='{
                       "spaceBetween": 30,
