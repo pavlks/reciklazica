@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Green Adriatic | Зелёная Адриатика</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Зелёная Адриатика - НКО, целью которой является повышение осознанности людей, забота об окружающей среде и популяризация идеи разделения и переработки отходов">
+    <meta name="keywords" content="переработка, вторсырьё, мусор, экоактивисты, экоакция, рециклажица, черногория, подгорица, бар, сутоморе, будва, радановичи, котор, рисан, тиват, херцег-нови">
+    <meta name="author" content="EcoMontenegro">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets-ga/favicon/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets-ga/favicon/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets-ga/favicon/logo.png">
+    <link rel="shortcut icon" href="../assets-ga/favicon/logo.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="../assets-ga/vendor/boxicons/css/boxicons.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="../assets-ga/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+
+  <!-- Body -->
+  <body>
+    
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+
+
+      <!-- Hero slider + BG parallax -->
+      <section class="jarallax dark-mode py-xxl-5" data-jarallax data-speed="0.4">
+        <span class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(180deg, rgba(11, 15, 25, 0.45) 0%, rgba(11, 15, 25, 0.95) 30%) "></span>
+        <div class="jarallax-img" style="background-image: url(../assets-ga/img/landing/social-bg.jpg);"></div>
+        <div class="position-relative zindex-5">
+          <!-- Slider -->
+          <div class="container">
+            <div class="row justify-content-center pt-lg-5">
+              <div class="col-xl-11 col-lg-12 col-12">
+                <img src="../assets-ga/img/logo.jpg" class="rounded-circle pt-2" width="50" alt="Green Adriatic">
+                <h1 class="display-2 text-center mb-lg-3">Green Adriatic</h1>
+                <div class="mt-5">
+                  <h3 class="text-center mb-1">Зелёная Адриатика</h3>
+                  <p class="fs-xl text-center text-light pb-2 mb-lg-3">Cообщество русскоговорящих экоактивистов Черногории</p>
+                  <h3 class="text-center mb-1">Green Adriatic</h3>
+                  <p class="fs-xl text-center text-light pb-2 mb-lg-3">Community of eco-volunteers in Montenegro</p>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-2">
+
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://reciklazica.me" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-success shadow-success rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bx-recycle text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Reciklažica Website
+                          <i class="bx bx-right-arrow-circle text-success fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Всё о нашей ежемесячной экоакции</p>
+                      </div>
+                    </a>
+                  </div>
+        
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://facebook.com/greenadriatic" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-primary shadow-primary rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bxl-facebook text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Наша страница в Facebook / Join us on Facebook
+                          <i class="bx bx-right-arrow-circle text-primary fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Читайте последние новости тут</p>
+                      </div>
+                    </a>
+                  </div>
+        
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://instagram.com/green_adriatic" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-primary shadow-primary rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bxl-instagram text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Наша страница в Instagram / Join us on Instagram
+                          <i class="bx bx-right-arrow-circle text-primary fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Смотрите наши активности и присоединяйтесь</p>
+                      </div>
+                    </a>
+                  </div>
+        
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://t.me/ecomontenegro" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-primary shadow-primary rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bxl-telegram text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Чат в Telegram / Join us on Telegram
+                          <i class="bx bx-right-arrow-circle text-primary fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Общайтесь и находите единомышленников</p>
+                      </div>
+                    </a>
+                  </div>
+        
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://www.google.com/maps/d/edit?hl=en&mid=182yYXyE8jGLzqg5psrZc2TxoZt2BIVY&ll=42.47711566441006%2C19.03829814999999&z=9" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-warning shadow-warning rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bxs-map-alt text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Карта с пунктами приёма / Recycling Map
+                          <i class="bx bx-right-arrow-circle text-warning fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Постоянно обновляемая карта с пунктами приёма вторсырья</p>
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Item -->
+                  <div class="col py-4 my-2 my-sm-3">
+                    <a href="https://docs.google.com/spreadsheets/d/1HGKfSRNqSvfobjDX4GuJL0NjmF7_VbcclOWoqRyLo_I/edit#gid=0" class="card card-hover bg-white h-100 border-0 shadow-sm text-decoration-none pt-3 px-3 pb-3 me-xl-2">
+                      <div class="card-body pt-4 pb-0 px-1">
+                        <div class="d-inline-block bg-warning shadow-warning rounded-3 position-absolute top-0 translate-middle-y p-2">
+                          <i class="bx bx-map-alt text-white fs-1"></i>
+                        </div>
+                        <h5 class="h5 d-inline-flex align-items-center mb-1">
+                            Таблица с пунктами приёма / Recycling table
+                          <i class="bx bx-right-arrow-circle text-warning fs-3 ms-2"></i>
+                        </h5>
+                        <p class="fs-sm text-body mb-0">Ищите пункты в своём городе</p>
+                      </div>
+                    </a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Vendor Scripts -->
+    <script src="../assets-ga/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets-ga/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../assets-ga/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="../assets-ga/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="../assets-ga/js/theme.min.js"></script>
+  </body>
+</html>
