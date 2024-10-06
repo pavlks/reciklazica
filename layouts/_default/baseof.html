@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {{ block "googleTag" . }}
+    {{ end }}
+
+    <meta charset="utf-8">
+    <title>{{ .Params.title }}</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ .Params.metaDescription }}">
+    <meta name="keywords" content="{{ .Params.metaKeywords }}">
+    <meta name="author" content="Ecomontenegro">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/logo.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../assets/favicon/safari-pinned-tab.svg" color="#68B056">
+    <link rel="shortcut icon" href="../assets/favicon/logo.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="../assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="../assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" media="screen" href="../assets/vendor/lightgallery/css/lightgallery-bundle.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="../assets/css/theme.css">
+
+    <!-- User Styles -->
+    <link rel="stylesheet" media="screen" href="../assets/css/custom.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+  
+  <!-- Body -->
+  <body>
+
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>{{ .Params.pageSpinner }}</span>
+      </div>
+    </div>
+
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
+      <header class="header navbar navbar-expand-sm bg-light shadow-sm fixed-top">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="../assets/favicon/logo.png" width="47" alt="Green Adriatic">
+            Green Adriatic
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Меню</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body ms-auto">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="{{ lower .Params.firstNavLang }}/" class="nav-link">{{ .Params.firstNavLang }}</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ lower .Params.secondNavLang }}/" class="nav-link">{{ .Params.secondNavLang }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">{{ .Params.lightThemeMode }}</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">{{ .Params.darkThemeMode }}</label>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Video + Title split section -->
+      <section class="container-fluid position-relative px-0 pt-5 mt-3 mt-lg-4">
+        <div class="row g-0">
+          <div class="col-xl-7 col-lg-6 pe-lg-5">
+            <div class="d-flex h-100 pe-xl-4">
+              <div class="w-100 h-100 overflow-hidden bg-position-center bg-repeat-0 bg-size-cover" style="background-image: url(../assets/img/landing/landing-main-02.jpg); border-bottom-left-radius: .5rem;"></div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6 position-relative py-5">
+            <img src="../assets/img/landing/hero-bg.png" class="position-absolute top-50 translate-middle-y ms-lg-n4" width="866" alt="Background shapes">
+            <div class="position-relative zindex-5 text-center text-lg-start px-3 px-lg-0 py-xl-4 py-xxl-5 mt-lg-3 mx-auto mx-lg-0" style="max-width: 530px;">
+              {{ if eq .Params.lang "cg" }}
+                {{ partial "hero_text_cg.html" . }}
+              {{ else if eq .Params.lang "en" }}
+                {{ partial "hero_text_en.html" . }}
+              {{ else }}
+                {{ partial "hero_text_ru.html" . }}
+              {{ end }}
+              <div class="d-flex align-items-center justify-content-center justify-content-lg-start text-start pb-2 pt-lg-2 pb-xl-0 pt-xl-5 mt-xxl-5">
+                <div class="d-flex me-3">
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-metal.png" class="rounded-circle" width="48" alt="Metal">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-plastic.png" class="rounded-circle" width="48" alt="Plastic">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-battery.png" class="rounded-circle" width="48" alt="Battery">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-paper.png" class="rounded-circle" width="48" alt="Paper">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-bulb.png" class="rounded-circle" width="48" alt="Bulb">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-glass.png" class="rounded-circle" width="48" alt="Glass">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-organic.png" class="rounded-circle" width="48" alt="Organic">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-cellular.png" class="rounded-circle" width="48" alt="Cellular">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-medical.png" class="rounded-circle" width="48" alt="Medical">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center bg-light rounded-circle ms-n3" style="width: 52px; height: 52px;">
+                    <img src="../assets/img/icons/logo-bottle-cap.png" class="rounded-circle" width="48" alt="Bottle cap">
+                  </div>
+                </div>
+                <!-- <span class="fs-sm"><span class="text-primary fw-semibold">Пластик, металл, картон</span>, крышечки, батарейки...</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- About -->
+      <section class="container pb-5 mb-2 mt-n3 mt-lg-0">
+          {{ if eq .Params.lang "cg" }}
+            {{ partial "about_text_cg.html" . }}
+          {{ else if eq .Params.lang "en" }}
+            {{ partial "about_text_en.html" . }}
+          {{ else }}
+            {{ partial "about_text_ru.html" . }}
+          {{ end }}
+      </section>
+
+
+      <!-- Waste examples -->
+      <section class="bg-secondary pb-md-2 pb-lg-5">
+        <div class="d-none d-lg-block" style="margin-top: -60px; padding-top: 60px;"></div>
+        <div class="container pb-4 pt-5">
+          {{ if eq .Params.lang "cg" }}
+            {{ partial "recycle_text_cg.html" . }}
+          {{ else if eq .Params.lang "en" }}
+            {{ partial "recycle_text_en.html" . }}
+          {{ else }}
+            {{ partial "recycle_text_ru.html" . }}
+          {{ end }}
+        </div>
+      </section>
+
+
+      <!-- Schedule -->
+      <section class="container py-5">
+        <div class="row mt-xl-2 mb-xl-3 pb-3 py-md-4 py-lg-5">
+          {{ if eq .Params.lang "cg" }}
+            {{ partial "schedule_text_cg.html" . }}
+          {{ else if eq .Params.lang "en" }}
+            {{ partial "schedule_text_en.html" . }}
+          {{ else }}
+            {{ partial "schedule_text_ru.html" . }}
+          {{ end }}
+        </div>
+      </section>
+
+
+      <!-- CTA -->
+      <section class="container py-5">
+          {{ if eq .Params.lang "cg" }}
+            {{ partial "donate_text_cg.html" . }}
+          {{ else if eq .Params.lang "en" }}
+            {{ partial "donate_text_en.html" . }}
+          {{ else }}
+            {{ partial "donate_text_ru.html" . }}
+          {{ end }}
+      </section>
+
+
+      <!-- Highlights (Video showreel) -->
+      <section class="bg-secondary py-5">
+        <div class="container py-2 py-md-4 py-lg-5">
+          {{ if eq .Params.lang "cg" }}
+            {{ partial "map_text_cg.html" . }}
+          {{ else if eq .Params.lang "en" }}
+            {{ partial "map_text_en.html" . }}
+          {{ else }}
+            {{ partial "map_text_ru.html" . }}
+          {{ end }}
+          <div class="position-relative overflow-hidden rounded-3 mb-4 mb-lg-5">
+            <!-- Iframe (Google map) -->
+            <div class="gallery">
+              <a href="https://www.google.com/maps/d/embed?mid=182yYXyE8jGLzqg5psrZc2TxoZt2BIVY&ehbc=2E312F"  data-iframe="true" class="gallery-item rounded-2" data-sub-html='<h6 class="fs-sm text-light">Google map embed</h6>'>
+                <img src="../assets/img/landing/map.png" alt="Gallery thumbnail">
+                <div class="gallery-item-caption fs-sm fw-medium">Google map embed</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- About -->
+      <section class="container pt-5 my-2 my-md-4 my-lg-5">
+        <div class="row pt-xl-3">
+          <div class="col-md-5 text-center text-md-start pb-5">
+              {{ if eq .Params.lang "cg" }}
+                {{ partial "founders_text_cg.html" . }}
+              {{ else if eq .Params.lang "en" }}
+                {{ partial "founders_text_en.html" . }}
+              {{ else }}
+                {{ partial "founders_text_ru.html" . }}
+              {{ end }}
+          </div>
+          <div class="col-xl-6 col-md-7 offset-xl-1 pb-4 pb-sm-3 pb-lg-0 mb-4 mb-sm-5 mb-lg-0">
+            <img src="../assets/img/landing/about-orgs.jpg" class="rounded-3 shadow-sm" alt="Image">
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer dark-mode bg-dark pt-5 pb-4 pb-lg-5">
+      <div class="container text-center pt-lg-3">
+        <div class="navbar-brand justify-content-center text-dark mb-2 mb-lg-4">
+          <img src="../assets/favicon/logo.png" class="me-2" width="60" alt="Reciklažica">
+          <span class="fs-4">Green Adriatic</span>
+        </div>
+        <!-- <ul class="nav justify-content-center pt-3 pb-4 pb-lg-5"> -->
+          <!-- <li class="nav-item"><a href="#" class="nav-link">Home</a></li> -->
+          <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+          <!-- <li class="nav-item"><a href="#" class="nav-link">Sponsors</a></li> -->
+        <!-- </ul> -->
+        <div class="d-flex justify-content-center pt-4 mt-lg-3">
+          <a href="https://t.me/ecomontenegro/" class="btn btn-icon btn-secondary btn-telegram mx-2">
+            <i class="bx bxl-telegram"></i>
+          </a>
+          <a href="https://www.facebook.com/greenadriatic/" class="btn btn-icon btn-secondary btn-facebook mx-2">
+            <i class="bx bxl-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/green_adriatic/" class="btn btn-icon btn-secondary btn-instagram mx-2">
+            <i class="bx bxl-instagram"></i>
+          </a>
+        </div>
+        <p class="nav d-block fs-sm text-center pt-5 mt-lg-4 mb-0">
+          <span class="text-light opacity-50">&copy; All rights reserved. Made by </span>
+          <a class="nav-link d-inline-block p-0" href="https://t.me/ecomontenegro/" target="_blank" rel="noopener">EcoMontenegro</a>
+        </p>
+      </div>
+    </footer>
+
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <!-- Vendor Scripts -->
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/lightgallery/lightgallery.min.js"></script>
+    <script src="../assets/vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js"></script>
+    <script src="../assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+    <script src="../assets/vendor/lightgallery/plugins/video/lg-video.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="../assets/js/theme.min.js"></script>
+  </body>
+</html>
+

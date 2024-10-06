@@ -1,0 +1,37 @@
+params:
+    lastYear: 2023
+    currentYear: 2024
+    nextYear: 2025
+
+    lastDay: 28
+    lastMonth: "Сентября"
+    lastMonthCg: "septembar"
+    lastMonthEn: "September"
+
+    nextDay: 26
+    nextMonth: "Октября"
+    nextMonthCg: "oktobar"
+    nextMonthEn: "October"
+
+    afterNextDay: 30
+    afterNextMonth: "Ноября"
+    afterNextMonthCg: "novembar"
+    afterNextMonthEn: "November"
+
+    lastKg: 1300
+    totalKg: 27 400
+    totalLocations: 8
+    totalEvents: 23
+    totalPeopleTelegram: 1800
+
+    eurosDonated: 75
+    percentageDonated: 75
+
+    saturday: "суббота"
+    saturdayCg: "subota"
+    saturdayEn: "saturday"
+
+    sunday: "воскресенье"
+    sundayCg: "nedelja"
+    sundayEn: "sunday"
+
